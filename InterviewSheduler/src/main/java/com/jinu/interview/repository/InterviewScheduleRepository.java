@@ -16,7 +16,7 @@ public interface InterviewScheduleRepository extends JpaRepository<InterviewSche
 	@Query("SELECT c FROM InterviewSchedule c WHERE c.interviewDate = :date")
 	List<InterviewSchedule> findByInterviewDate(Date date);
 	
-	@Query("select new com.oracle.interview.model.EmpIoyeeidGroup(v.interviewer, COUNT(v.timeSchedule)) FROM InterviewSchedule v  where v.interviewDate=:date GROUP BY v.interviewer  HAVING COUNT(v.timeSchedule) < 3")
+	@Query("select new com.jinu.interview.model.EmpIoyeeidGroup(v.interviewer, COUNT(v.timeSchedule)) FROM InterviewSchedule v  where v.interviewDate=:date GROUP BY v.interviewer  HAVING COUNT(v.timeSchedule) < 3")
 	public List<EmpIoyeeidGroup> groupByInterviewer(Date date); 
 	
 	@Query("SELECT c FROM InterviewSchedule c WHERE c.interviewDate = :date AND c.interviewer = :interviewer")
